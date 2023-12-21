@@ -3,35 +3,54 @@ import React from "react";
 import './styles.css'
 
 import Whatsapp from '../../assents/images/icons/whatsapp.svg'
+import api from '../../services/api.ts'
 
-function TeacherItem() {
-    return(<article className='teacher-item'>
-                    
+export interface Teacher{
+    avatar:string;
+    bio: string;
+    cost: number;
+    id: number;
+    name: string;
+    subject: string;
+    whatsapp: string;
+};
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+
+const TeacherItem:React.FC<TeacherItemProps> = ({teacher}) => {
+    function createNewConnection(){
+        api.post('connections', {user_id: teacher.id})
+    }
+    
+    return(
+    <article className='teacher-item'>
+    
     <header>
-        <img src='https://cdn.discordapp.com/attachments/860600728685772852/1186757572414418994/Fred.jpg?ex=6594691e&is=6581f41e&hm=7afa66fe759fdb04334014c52f7be44d59a8b5e63e9704d3eab94a6fdf358985&' alt="Fred" />
+        <img src={teacher.avatar} alt="Fred" />
         <div>
-            <strong>Fredetico Gonçalves</strong>
-            <span>História</span>
+            <strong>{teacher.name}</strong>
+            <span>{teacher.subject}</span>
         </div>
     </header>
     
     <p>
-        Fred, o professor apaixonado por história. 
-        <br /> <br />
-        Envolve os alunos com entusiasmo e profundo conhecimento do passado com sua abordagem dinâmica que transforma as aulas em fascinantes jornadas pelo tempo, conectando eventos históricos de maneira envolvente.
+        {teacher.bio}
     </p>
 
     <footer>
         <p>
             Preço/hora
             <strong>
-                R$ 50,00
+                R$ {teacher.cost}
             </strong>
         </p>
-        <button type='button'>
+        <a target="_blank" onClick={createNewConnection} href={`https://wa.me/${teacher.whatsapp}`} rel="noreferrer">
             <img src={Whatsapp} alt="Whatsap" />
             Entrar em contato
-        </button>
+        </a>
     </footer>
 
 </article>)
