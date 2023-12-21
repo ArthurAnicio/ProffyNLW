@@ -3,7 +3,7 @@ import './styles.css'
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement>{
     label : string;
-    name: string;
+    name?: string;
     
 }
 const TextArea: React.FC<TextAreaProps> = (props, ...rest) => {

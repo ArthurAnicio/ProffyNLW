@@ -3,7 +3,7 @@ import './styles.css'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement>{
     label : string;
-    name: string;
+    name?: string;
     opitions: Array<{
         value:string;
         label:string;
