@@ -1,14 +1,14 @@
- .Textarea-block{
+ .textarea-block{
     position: relative;
   }
-   .Textarea-block + .Textarea-block{
+   .textarea-block + .textarea-block{
     margin-top: 1.4rem;
   }
-   .Textarea-block label{
+   .textarea-block label{
     font-size: 1.4rem;
   }
   
-   .Textarea-block textarea{
+   .textarea-block textarea{
     width: 100%;
     height: 16rem;
     min-height: 8rem;
@@ -22,7 +22,7 @@
     font: 1.6rem Archivo;
   }
   
-   .Textarea-block:focus-within::after {
+   .textarea-block:focus-within::after {
       width: calc(100% - 3.2rem);
       height: 2px;
       content: '';
