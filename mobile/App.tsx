@@ -1,30 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-
-import Landig from './src/pages/Landing';
-import AppLoading from 'expo-app-loading';
-import { Archivo_400Regular, Archivo_700Bold, useFonts } from '@expo-google-fonts/archivo';
-import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 import React from 'react';
+import Landing from './src/pages/Landing'
+import  { AppLoading }  from 'expo';
+import { Archivo_400Regular, Archivo_700Bold, useFonts } from '@expo-google-fonts/archivo';
+import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import AppStack from './src/routes/AppStack';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Archivo_400Regular,
     Archivo_700Bold,
     Poppins_400Regular,
-    Poppins_600SemiBold
-  })
+    Poppins_600SemiBold,
+  });
 
-  if(!fontsLoaded){
+  if(!fontsLoaded) {
     return <AppLoading />
-  }
-  else{
+  } else {
     return (
       <>
-        <Landig />
-        <StatusBar style='light' />
+        <AppStack />
+        <StatusBar style="light" />
       </>
     );
-  }
+  }  
 }
-
-
